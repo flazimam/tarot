@@ -1,0 +1,137 @@
+:root {
+    --midnight: #140d24;
+    --plum: #21173a;
+    --plum-soft: #2c2049;
+    --gold: #c9a24b;
+    --gold-soft: #e2c985;
+    --ivory: #efe6d4;
+    --muted: #b8accb;
+    --rose: #c25a73;
+    --radius: 14px;
+    --bs-body-font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    --bs-body-bg: var(--midnight);
+    --bs-body-color: var(--ivory);
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+
+body {
+    background-color: var(--midnight);
+    background-image:
+        radial-gradient(1px 1px at 12% 18%, rgba(239,230,212,.55) 50%, transparent 51%),
+        radial-gradient(1px 1px at 78% 8%, rgba(239,230,212,.45) 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 44% 62%, rgba(201,162,75,.5) 50%, transparent 51%),
+        radial-gradient(1px 1px at 90% 74%, rgba(239,230,212,.4) 50%, transparent 51%),
+        radial-gradient(1px 1px at 22% 88%, rgba(239,230,212,.35) 50%, transparent 51%);
+    background-size: 380px 380px;
+    line-height: 1.7;
+}
+
+h1, h2, h3, .brand, .price-amount, .tcard-name {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: .01em;
+}
+
+a { color: var(--gold-soft); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.text-muted-soft { color: var(--muted); }
+
+/* Navbar */
+.nav-tarot { background: rgba(20, 13, 36, .88); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(201,162,75,.2); }
+.brand { font-size: 1.6rem; color: var(--gold-soft); }
+.nav-tarot .nav-link { color: var(--ivory); font-size: .95rem; }
+.nav-tarot .nav-link:hover { color: var(--gold-soft); }
+
+/* Buttons */
+.btn-gold { background: var(--gold); color: #1a1228; border: 1px solid var(--gold); font-weight: 600; }
+.btn-gold:hover { background: var(--gold-soft); border-color: var(--gold-soft); color: #1a1228; }
+.btn-ghost { background: transparent; color: var(--ivory); border: 1px solid rgba(239,230,212,.35); }
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold-soft); }
+
+/* Layout */
+.section { padding: 5rem 0; }
+.section-alt { background: var(--plum); }
+.section-title { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; }
+.section-lead { color: var(--muted); max-width: 40rem; margin-bottom: 2.5rem; }
+.sub-title { font-size: 1.5rem; }
+
+/* Hero */
+.hero { padding: 4.5rem 0 5rem; }
+.display-title { font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1.05; margin-bottom: 1.25rem; }
+.lead-text { color: var(--muted); font-size: 1.1rem; max-width: 32rem; margin-bottom: 1.75rem; }
+
+/* Draw a card */
+.draw { background: var(--plum); border: 1px solid rgba(201,162,75,.25); border-radius: 22px; padding: 1.75rem 1.25rem; }
+.draw-hint { text-align: center; color: var(--muted); margin-bottom: 1.25rem; }
+.deck { display: flex; justify-content: center; gap: .9rem; perspective: 900px; }
+
+.tcard { background: none; border: 0; padding: 0; width: 30%; max-width: 130px; aspect-ratio: 2 / 3.3; cursor: pointer; transition: opacity .3s, transform .3s; }
+.tcard:hover:not(:disabled):not(.is-flipped) { transform: translateY(-8px); }
+.tcard:disabled { cursor: default; }
+.tcard.is-dim { opacity: .35; }
+.tcard-inner { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .7s; }
+.tcard.is-flipped .tcard-inner { transform: rotateY(180deg); }
+.tcard-back, .tcard-front { position: absolute; inset: 0; border-radius: 10px; backface-visibility: hidden; border: 1.5px solid var(--gold); }
+.tcard-back {
+    background:
+        radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 4px),
+        repeating-conic-gradient(from 0deg at 50% 50%, rgba(201,162,75,.35) 0 6deg, transparent 6deg 18deg),
+        var(--plum-soft);
+    box-shadow: inset 0 0 0 5px var(--plum-soft), inset 0 0 0 6px rgba(201,162,75,.5);
+}
+.tcard-front { transform: rotateY(180deg); background: var(--ivory); color: #2a1d45; display: flex; align-items: center; justify-content: center; text-align: center; padding: .5rem; }
+.tcard-face { display: flex; flex-direction: column; gap: .35rem; align-items: center; }
+.tcard-front.is-reversed .tcard-face { transform: rotate(180deg); }
+.tcard-num { font-family: "Cormorant Garamond", serif; font-size: 1.4rem; color: #8a6a1f; }
+.tcard-name { font-size: 1.05rem; line-height: 1.15; }
+
+.reading { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid rgba(201,162,75,.25); }
+.reading-title { font-size: 1.8rem; margin-bottom: .15rem; }
+.reading-kw { color: var(--rose); font-style: italic; margin-bottom: .75rem; }
+.reading-text { margin-bottom: 1rem; }
+
+/* Tentang tarot */
+.tarot-dl dt { font-family: "Cormorant Garamond", serif; font-size: 1.3rem; color: var(--gold-soft); }
+.tarot-dl dd { color: var(--ivory); margin-bottom: 1rem; }
+.suits { list-style: none; padding: 0; margin-bottom: 1rem; }
+.suits li { padding: .45rem 0; border-bottom: 1px dashed rgba(201,162,75,.25); }
+.suits strong { color: var(--gold-soft); margin-right: .4rem; }
+
+/* Pricelist: kartu berbentuk lengkung seperti kartu tarot */
+.price-card {
+    position: relative; height: 100%; display: flex; flex-direction: column;
+    padding: 3.5rem 1.4rem 1.5rem; background: var(--midnight);
+    border: 1.5px solid rgba(201,162,75,.45);
+    border-radius: 50% 50% 14px 14px / 20% 20% 14px 14px;
+}
+.price-card.is-featured { border-color: var(--gold); background: var(--plum-soft); box-shadow: 0 0 0 4px rgba(201,162,75,.15); }
+.price-badge { position: absolute; top: 1rem; left: 50%; transform: translateX(-50%); background: var(--gold); color: #1a1228; font-size: .72rem; font-weight: 600; padding: .15rem .7rem; border-radius: 999px; white-space: nowrap; }
+.price-name { font-size: 1.6rem; text-align: center; margin-bottom: .35rem; }
+.price-tagline { text-align: center; color: var(--muted); font-size: .92rem; min-height: 3.3em; }
+.price-amount { text-align: center; font-size: 2.2rem; color: var(--gold-soft); margin: .25rem 0 .75rem; }
+.price-meta { list-style: none; padding: 0; margin: 0 0 1.25rem; font-size: .92rem; flex-grow: 1; }
+.price-meta li { padding: .3rem 0; border-top: 1px dashed rgba(201,162,75,.25); text-align: center; }
+
+/* Langkah */
+.steps { max-width: 44rem; padding-left: 1.4rem; }
+.steps li { padding: .6rem 0 .6rem .4rem; }
+.steps li::marker { font-family: "Cormorant Garamond", serif; font-weight: 700; font-size: 1.4rem; color: var(--gold); }
+
+/* FAQ */
+.faq { --bs-accordion-bg: transparent; --bs-accordion-border-color: rgba(201,162,75,.3); --bs-accordion-btn-bg: transparent; --bs-accordion-active-bg: rgba(201,162,75,.08); --bs-accordion-active-color: var(--gold-soft); --bs-accordion-btn-color: var(--ivory); --bs-accordion-color: var(--ivory); --bs-accordion-btn-focus-box-shadow: 0 0 0 2px var(--gold); max-width: 46rem; }
+.faq .accordion-header { font-family: var(--bs-body-font-family); font-size: 1rem; margin: 0; }
+
+.cta { background: radial-gradient(ellipse at center, rgba(201,162,75,.12), transparent 65%); }
+.footer { padding: 1.5rem 0; border-top: 1px solid rgba(201,162,75,.2); font-size: .9rem; }
+
+@media (max-width: 575.98px) {
+    .section { padding: 3.5rem 0; }
+    .deck { gap: .6rem; }
+    .tcard-name { font-size: .9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .tcard, .tcard-inner { transition: none; }
+}
